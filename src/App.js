@@ -5,31 +5,40 @@ import {Route} from "react-router-dom"
 import {Link} from "react-router-dom"
 //6. import reacstrap components
 import {Button, Navbar, Card, CardImg, ButtonGroup} from "reactstrap"
-
+//10. Importing pizzaform
+import PizzaForm from "./PizzaForm" 
 
 const App = () => {
   return (
     <>
-    <Navbar>
-      <h1>LAMBDA EATS</h1> 
+    <Navbar color="info">
+      <h1 style={{color:"white"}}>LAMBDA EATS</h1> 
 
       <ButtonGroup>
-        <Link To="/">
-      <Button outline color="primary" color="info" align="right">Home</Button> 
-      </Link>
-      <Button outline color="primary" color="info">Help</Button> 
+        <Link to={"/"}>
+          <Button color="info" align="right">Home</Button> 
+        </Link>
+      <Button color="info">Help</Button> 
       </ButtonGroup>
-
-    {/* 7. adding the header image */}
-    <Card>
-      <CardImg src={require("../Assets/Pizza.jpg")}/>
-    </Card>
- 
     
     </Navbar>
 
+    <Route exact path ="/">
+    {/* 7. adding the header image */}
+    <Card>
+      <CardImg src={require("./Pizza.jpg")}/>
+      {/* 12. Adding the link to the pizza button */}
+      <Link to={"/pizza"}>
+      <Button color="info" style={{position: "absolute", left:"50%", top:"50%"}}>Pizza?</Button>
+      </Link>
+    </Card>
+    </Route>
     
-
+    {/* 8.Add another Route for the Pizza form path */}
+    <Route path="/pizza">
+    {/* 11. Rendering the pizza form */}
+    <PizzaForm />
+    </Route>
 
     {/* 4. Render the menu */}
     

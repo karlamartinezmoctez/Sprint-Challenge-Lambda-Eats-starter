@@ -3,6 +3,9 @@
 import React, {useState} from "react";
 //14. import components from library
 import {Card, CardImg, Form, Input, FormGroup, Dropdown, DropdownToggle, DropdownMenu, Label, Button} from "reactstrap"
+import axios from 'axios';
+//22. importing validation library
+import * as yup from 'yup';
 
 const PizzaForm = () =>{
 
@@ -28,6 +31,21 @@ const PizzaForm = () =>{
         extraCheese: false,
         special: ""
     });
+    //23. define your validation schema
+    const schema = yup.object().shape({
+        name: yup.string().required().min(2),
+        special: yup.string()
+    })
+
+    //24. submit function to check schema everytime it's submitted
+    const submit = () =>{
+        schema.validate(formData).then(() => {
+            axios.post("https://reqres.in/api/users", formData).then((res) => {
+                console.log(res.data), "This is your posted data"
+            })
+        })
+    }
+
     //19. adding handlechange
     const handleChange = (e) =>{
         setFormData({...formData,[e.target.name]: e.target.value})
@@ -52,6 +70,7 @@ const PizzaForm = () =>{
     {/* Creating the form shell */}
     <Form style={{margin: "5%"}} onSubmit={(e) =>{
         e.preventDefault()
+        submit()
         console.log(formData)
     }}>
         <FormGroup>

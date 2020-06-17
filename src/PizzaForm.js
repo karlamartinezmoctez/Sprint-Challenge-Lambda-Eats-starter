@@ -41,7 +41,7 @@ const PizzaForm = () =>{
     const submit = () =>{
         schema.validate(formData).then(() => {
             axios.post("https://reqres.in/api/users", formData).then((res) => {
-                console.log(res.data), "This is your posted data"
+                console.log(res.data, "This is your posted data")
             })
         })
     }
@@ -68,7 +68,7 @@ const PizzaForm = () =>{
     </Card>
 
     {/* Creating the form shell */}
-    <Form style={{margin: "5%"}} onSubmit={(e) =>{
+    <Form style={{margin: "5%"}} data-cy="submit" onSubmit={(e) =>{
         e.preventDefault()
         submit()
         console.log(formData)
@@ -76,7 +76,7 @@ const PizzaForm = () =>{
         <FormGroup>
         <legend>Name</legend>
         {/* 20. implement the values and on change throughout the form */}
-        <Input type="name" name="name" value={formData.name} onChange={handleChange}/>
+        <Input type="name" name="name" data-cy="name" value={formData.name} onChange={handleChange}/>
         </FormGroup>
 
         {/* 16. creating the dropdown choice of size, by creating a toggle useState and toggle funciton and using it in the dropdown*/}
@@ -144,91 +144,91 @@ const PizzaForm = () =>{
     <FormGroup check>
         
         <Label check> 
-            <Input type="checkbox" name="pepperoni" value="Pepperoni" checked={formData.pepperoni} onChange={handleToppings}/>Pepperoni
+            <Input type="checkbox" name="pepperoni" data-cy="checkbox1" value="Pepperoni" checked={formData.pepperoni} onChange={handleToppings}/>Pepperoni
         </Label>
     </FormGroup>
 
     <FormGroup check>
         
         <Label check> 
-            <Input type="checkbox" name="sausage" value="Sausage" checked={formData.sausage} onChange={handleToppings}/>Sausage
+            <Input type="checkbox" name="sausage" data-cy="checkbox2" value="Sausage" checked={formData.sausage} onChange={handleToppings}/>Sausage
         </Label>
     </FormGroup>
 
     <FormGroup check>
         
         <Label check> 
-            <Input type="checkbox" name="canadianBacon" checked={formData.canadianBacon} onChange={handleToppings}/>Canadian Bacon
+            <Input type="checkbox" name="canadianBacon" data-cy="checkbox3" checked={formData.canadianBacon} onChange={handleToppings}/>Canadian Bacon
         </Label>
     </FormGroup>
     <FormGroup check>
         
         <Label check> 
-            <Input type="checkbox" name="spicyItalian" checked={formData.spicyItalian} onChange={handleToppings}/>Spicy Italian Sausage
+            <Input type="checkbox" name="spicyItalian" data-cy="checkbox4" checked={formData.spicyItalian} onChange={handleToppings}/>Spicy Italian Sausage
         </Label>
     </FormGroup>
     <FormGroup check>
         
         <Label check> 
-            <Input type="checkbox" name="grilledChicken" checked={formData.grilledChicken} onChange={handleToppings}/>Grilled Chicken
-        </Label>
-    </FormGroup>
-
-    <FormGroup check>
-        
-        <Label check> 
-            <Input type="checkbox" name="onions" checked={formData.onions} onChange={handleToppings}/>Onions
+            <Input type="checkbox" name="grilledChicken" data-cy="checkbox5" checked={formData.grilledChicken} onChange={handleToppings}/>Grilled Chicken
         </Label>
     </FormGroup>
 
     <FormGroup check>
         
         <Label check> 
-            <Input type="checkbox" name="greenPepper" checked={formData.greenPepper} onChange={handleToppings}/>Green Pepper
+            <Input type="checkbox" name="onions" data-cy="checkbox6" checked={formData.onions} onChange={handleToppings}/>Onions
         </Label>
     </FormGroup>
 
     <FormGroup check>
         
         <Label check> 
-            <Input type="checkbox" name="diceTomatoes" checked={formData.diceTomatoes} onChange={handleToppings}/>Dice Tomatoes
+            <Input type="checkbox" name="greenPepper" data-cy="checkbox7" checked={formData.greenPepper} onChange={handleToppings}/>Green Pepper
         </Label>
     </FormGroup>
 
     <FormGroup check>
         
         <Label check> 
-            <Input type="checkbox" name="blackOlives" checked={formData.blackOlives} onChange={handleToppings}/>Black Olives
+            <Input type="checkbox" name="diceTomatoes" data-cy="checkbox8" checked={formData.diceTomatoes} onChange={handleToppings}/>Dice Tomatoes
+        </Label>
+    </FormGroup>
+
+    <FormGroup check>
+        
+        <Label check> 
+            <Input type="checkbox" name="blackOlives" data-cy="checkbox9" checked={formData.blackOlives} onChange={handleToppings}/>Black Olives
         </Label>
     </FormGroup>
     <FormGroup check>
         
         <Label check> 
-            <Input type="checkbox" name="roastedGarlic" checked={formData.roastedGarlic} onChange={handleToppings}/>Roasted Garlic
+            <Input type="checkbox" name="roastedGarlic" data-cy="checkbox10" checked={formData.roastedGarlic} onChange={handleToppings}/>Roasted Garlic
         </Label>
     </FormGroup>
     <FormGroup check>
         
         <Label check> 
-            <Input type="checkbox" name="artichokeHearts" checked={formData.artichokeHearts} onChange={handleToppings}/>Artichoke Hearts
+            <Input type="checkbox" name="artichokeHearts" data-cy="checkbox11" checked={formData.artichokeHearts} onChange={handleToppings}/>Artichoke Hearts
         </Label>
     </FormGroup>
     <FormGroup check>
         
         <Label check> 
-            <Input type="checkbox" name="threeCheese" checked={formData.threeCheese} onChange={handleToppings}/>Three Cheese
+            <Input type="checkbox" name="threeCheese" data-cy="checkbox12" checked={formData.threeCheese} onChange={handleToppings}/>Three Cheese
         </Label>
     </FormGroup>
     <FormGroup check>
         
         <Label check> 
-            <Input type="checkbox" name="pineapple" checked={formData.pineapple} onChange={handleToppings}/>Pineapple
+            <Input type="checkbox" name="pineapple" data-cy="checkbox13" checked={formData.pineapple} onChange={handleToppings}/>Pineapple
         </Label>
     </FormGroup>
     <FormGroup check>
         
         <Label check> 
-            <Input type="checkbox" name="extraCheese" checked={formData.extraCheese} onChange={handleToppings}/>Extra Cheese
+            <Input type="checkbox" name="extraCheese" data-cy="checkbox14" checked={formData.extraCheese} onChange={handleToppings}/>Extra Cheese
         </Label>
     </FormGroup>
 

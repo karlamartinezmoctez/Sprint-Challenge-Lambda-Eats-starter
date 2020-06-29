@@ -8,6 +8,9 @@ import axios from 'axios';
 import * as yup from 'yup';
 
 const PizzaForm = () =>{
+    const [errors, setErrors] = useState({
+        name: ''
+    })
 
     const [dropdownOpen, setDropdownOpen] = useState(false);
     //18. creating a sata for the data
@@ -39,9 +42,22 @@ const PizzaForm = () =>{
 
     //24. submit function to check schema everytime it's submitted
     const submit = () =>{
-        schema.validate(formData).then(() => {
+        schema.validate(formData)
+        .then(valid => {
+            setErrors(
+                {...errors,
+                name: ''}
+            )
+        })
+        .then(() => {
             axios.post("https://reqres.in/api/users", formData).then((res) => {
                 console.log(res.data, "This is your posted data")
+            })
+        })
+        .catch(err => {
+            setErrors({
+                ...errors,
+                name: err.errors[0]
             })
         })
     }
@@ -76,6 +92,7 @@ const PizzaForm = () =>{
         <FormGroup>
         <legend>Name</legend>
         {/* 20. implement the values and on change throughout the form */}
+        {errors.name.length > 0 ? (<p className='errors'>{errors.name}</p>) : ''}
         <Input type="name" name="name" data-cy="name" value={formData.name} onChange={handleChange}/>
         </FormGroup>
 
